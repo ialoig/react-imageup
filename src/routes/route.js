@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Route, Redirect } from "react-router-dom";
 
-import DefaultLayout from "../components/layout/default";
-import AuthLayout from "../components/layout/auth";
+import DefaultLayout from "../layout/default";
+import AuthLayout from "../layout/auth";
 
 export default function RouteWrapper({
   component: Component,
@@ -25,7 +25,7 @@ export default function RouteWrapper({
    * (SignIn or SignUp) after being authenticated.
    */
   if (!isPrivate && signed) {
-    return <Redirect to="/homepage" />;
+    return <Redirect to="/dashboard" />;
   }
 
   const Layout = signed ? AuthLayout : DefaultLayout;
