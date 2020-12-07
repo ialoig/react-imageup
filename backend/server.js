@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 const express = require('express');
 const fileupload = require("express-fileupload");
-const app = express();
 const cors = require("cors");
+
+const app = express();
+const imagesRouter = require('./routes/api/image');
 
 require('dotenv').config();
 
@@ -30,7 +32,6 @@ db.once('open', () => {
 
 
 //API endpoint
-const imagesRouter = require('./routes/api/image');
 app.use('/api/image', imagesRouter); 
 
 app.listen(port, () => {
