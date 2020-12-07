@@ -1,5 +1,6 @@
-let Image = require("../../models/image.model");
 const router = require("express").Router();
+let Image = require("../../models/image.model");
+
 
 //route that returns all images
 router.route("/images").get((req, res) => {
@@ -12,12 +13,13 @@ router.route("/images").get((req, res) => {
 //Route that store a new image
 //@route POST api/image/new
 router.route("/new").post((req, res) => {
-    console.log("passing new: " +req.body);
-    const {name, file} = req.body;
-    if (!name || !file) {
+    console.log("getting from body [name]: " +req.body.name);
+    console.log("getting from body [file]: " +req.files);
+    const {name, files} = req.body;
+    if (!name || !req.files) {
         return res.status(400).send("Error inserting new image, Name or File not valid!")
     }
-
+    console.log("name=" +name+ ", file=" +files);
     const newImage = new Image({
         name: req.body.name
     });
