@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const express = require('express');
 const fileupload = require("express-fileupload");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const app = express();
 const imagesRouter = require('./routes/api/image');
@@ -15,6 +16,18 @@ app.use(fileupload()); //a middleware that extract req.files
 
 //port connection
 const port = process.env.PORT || 5000;
+
+//enable cross-origin-site-request
+app.use((req, res, next) => {
+    res.set({
+        "Access-Control-Allow-Origin": "*"
+    });
+    next();
+})
+
+//using bodyparser to encode body from request
+app.use(bodyParser.urlencoded({ extended: "false" }));
+app.use(bodyParser.json());
 
 //Database connection
 const uri = process.env.ATLAS_URI;

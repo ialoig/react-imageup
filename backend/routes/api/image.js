@@ -5,8 +5,8 @@ let Image = require("../../models/image.model");
 //route that returns all images
 router.route("/images").get((req, res) => {
     Image.find()
-    .then(images => res.json(images))
-    .catch(err => res.status(400).json("Error: " +err));
+        .then(images => res.json(images))
+        .catch(err => res.status(400).json("Error: " +err));
 })
 
 
@@ -35,7 +35,7 @@ router.route("/new").post((req, res) => {
         .catch(err => res.status(400).send("Error saving new image: " + err))
 });
 
-
+/*
 router.route("/:id").get((res, req) => {
     const imageId = req.params.id;
     Image.findById(imageId, (err, imageFound) => {
@@ -49,6 +49,7 @@ router.route("/:id").get((res, req) => {
         res.json(imageFound);
     })
 })
+*/
 
 
 module.exports = router;
