@@ -4,7 +4,11 @@ module.exports = {
     // purgeLayersByDefault: true,
   },
   purge: [],
-  target: 'relaxed',
+  //enable for production server
+  //purge: [
+  //  './src/**/*.html',
+  //  './src/**/*.js',
+  //],
   prefix: '',
   important: false,
   separator: ':',
