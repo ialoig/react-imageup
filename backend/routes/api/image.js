@@ -5,7 +5,10 @@ let Image = require("../../models/image.model");
 //route that returns all images
 router.route("/images").get((req, res) => {
     Image.find()
-        .then(images => res.json(images))
+        .then(images => {
+            console.log("found n." +images.length+ " images");
+            res.json(images);
+        })
         .catch(err => res.status(400).json("Error: " +err));
 })
 

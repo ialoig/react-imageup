@@ -46,3 +46,6 @@
     }
 ```
 
+### TODO
+
+- set correctly model schema with lower case variables (Data, ContentType ...)
