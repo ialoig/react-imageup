@@ -24,16 +24,16 @@ const Explore = () => {
 	}, []);
 
 	return (
-    	<>
+    	<div className="overflow-auto overflow-x-hidden">
 			{ (images.length === 0 || !images) && <h1>No images found ...</h1>}
 			{ images.length>0 && 
-				<div className="grid grid-flow-row-dense m-12 gap-4" style={{"gridTemplateColumns": "repeat(3,1fr)"}}>
+				<div className="m-12 leading-none" style={{"columnCount": "3"}}>
 					{images.map(image => (
-						<ImageGrid key={image._id} image={image} />
+						<ImageGrid key={image._id} data={image} />
 					))}
 				</div>
 			}
-      	</>
+      	</div>
     )
 }
 

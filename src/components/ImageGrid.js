@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState, useEffect }  from "react";
 
-const ImageGrid = ({image}) => {
+const ImageGrid = ({data}) => {
+
+    const [image, setImage] = useState({
+        name: "",
+        base64: ""
+    });
 
     const convertToBase64 = (image) => {
         var binary = '';
@@ -15,18 +20,17 @@ const ImageGrid = ({image}) => {
         return imgStr;
     }
 
-    const style_tall = "gridRow: auto / span 2";
-    const style_wide = "gridColumn: auto / span 2";
-
-    const styles = [style_tall, style_wide];
-
-    const randomlyStyle = styles[Math.floor(Math.random() * styles.length)];
+    useEffect( () => {
+        setImage({
+            name: data.name,
+            base64: convertToBase64(data)
+        })
+    }, [data.name, data]);
 
 
     return (
-        <figure className="" style={{randomlyStyle}}>
-            <img src={convertToBase64(image)} alt={image.name} className="w-full"></img>
-            <figcaption>{image.name}</figcaption>
+        <figure className="mb-4">
+            <img src={image.base64} alt={image.name} className="rounded w-full"></img>
         </figure>
     )
 
