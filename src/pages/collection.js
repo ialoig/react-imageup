@@ -4,7 +4,7 @@ class Collection extends React.Component {
 
   render() {
     return (
-        <div>Collection</div>
+        <div className="h-screen overflow-auto overflow-x-hidden">Collection</div>
     )
   }
 }
