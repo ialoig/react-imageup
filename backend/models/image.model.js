@@ -14,6 +14,9 @@ const imageSchema = new Schema({
         Data: Buffer,
         ContentType: String
     }
+},
+{
+    timestamps: true
 })
 
 const Images = mongoose.model("Images", imageSchema);
