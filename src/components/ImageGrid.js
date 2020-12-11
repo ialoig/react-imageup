@@ -2,10 +2,10 @@ import React, { useState, useEffect }  from "react";
 
 const ImageGrid = ({data}) => {
 
-    const [image, setImage] = useState({
+    const [images, setImages] = useState([{
         name: "",
         base64: ""
-    });
+    }]);
 
     const convertToBase64 = (image) => {
         var binary = '';
@@ -16,22 +16,35 @@ const ImageGrid = ({data}) => {
         var base64Flag = "data:" + image.file.ContentType+";base64,";
         var imgStr = base64Flag + arrBuffer;
 
-        console.log("converting to Base64 ...");
+        console.log("converting to Base64 ["+image.name+"]");
         return imgStr;
     }
 
     useEffect( () => {
-        setImage({
-            name: data.name,
-            base64: convertToBase64(data)
-        })
-    }, [data.name, data]);
+        console.log("data="+data.length);
+        data.map(image => {
+            const localImage = {
+                name: image.name,
+                base64: convertToBase64(image)
+            }
+            return setImages(images => [...images, localImage]);
+        });
+    }, [data]);
 
 
     return (
-        <figure className="mb-4">
-            <img src={image.base64} alt={image.name} className="rounded w-full"></img>
-        </figure>
+        <>
+        { images.length>0 &&
+            <div className="m-12 leading-none" style={{"columnCount": "3"}}>
+            { images.map(image => (
+                <figure key={image.name} className="mb-4">
+                    <img key={image.name} src={image.base64} alt={image.name} className="rounded w-full"></img>
+                </figure>
+                ))
+            }
+            </div>
+        }
+        </>
     )
 
 }
