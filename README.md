@@ -1,7 +1,7 @@
 # Hi! :wave: and welcome to ImageUp repository
 
-### ReactJS
-### 🎨 Tailwind css
+#### ReactJS
+#### 🎨 Tailwind css
 
 ```shell
     $ npm install tailwindcss postcss-cli autoprefixer@9.8.6 -D
@@ -46,6 +46,10 @@
     }
 ```
 
-### TODO
+### :pencil2: TODO
 
-- set correctly model schema with lower case variables (Data, ContentType ...)
+:radio_button: set correctly model schema with lower case variables (Data, ContentType ...)
+
+:radio_button: optimization on conversion to base64
+
+:radio_button: render a loading component when downloading images

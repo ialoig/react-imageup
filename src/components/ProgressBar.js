@@ -4,10 +4,8 @@ import React from "react";
 const ProgressBar = ({percentage}) => {
 
     return(
-        <div className="relative pt-1">
-            <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
-                <div style={{ width: percentage }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
-            </div>
+        <div className="h-2 mt-1 rounded-sm bg-blue-200 ">
+            <div style={{ width: percentage+"%" }} className="whitespace-nowrap bg-blue-500"></div>
         </div>
     )
 }
